@@ -1,0 +1,26 @@
+brooklyn.catalog:
+  items:
+# TODO Need to replace this with correct url or library once released
+  - "https://raw.githubusercontent.com/brooklyncentral/common-catalog-utils/master/common-tests/src/main/resources/commontests/common.tests.bom"
+
+  - id: elk-stack-tests
+    version: "1.0.0-SNAPSHOT"
+    itemType: template
+    name: ELK stack isUp test
+    item:
+      services:
+      - type: ELK-stack
+        id: target-app
+
+      - type: test-case
+        brooklyn.config:
+          targetId: target-app
+          targetResolutionTimeout: 10s
+          timeout: 40m
+
+        brooklyn.children:
+
+        - type: assert-up-and-running-initial
+          name: "1. Node up and running"
+
+
