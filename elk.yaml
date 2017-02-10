@@ -16,6 +16,8 @@ brooklyn.catalog:
         name:  es
         brooklyn.config:
           install.version: 1.4.4
+          elasticsearch.user:
+          elasticsearch.password:
       - type: kibana-standalone
         id: kibana
         name: kibana
